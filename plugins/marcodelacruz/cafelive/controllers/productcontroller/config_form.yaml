@@ -1,0 +1,10 @@
+name: ProductController
+form: $/marcodelacruz/cafelive/models/product/fields.yaml
+modelClass: MarcoDeLaCruz\Cafelive\Models\Product
+defaultRedirect: marcodelacruz/cafelive/productcontroller
+create:
+    redirect: 'marcodelacruz/cafelive/productcontroller/update/:id'
+    redirectClose: marcodelacruz/cafelive/productcontroller
+update:
+    redirect: marcodelacruz/cafelive/productcontroller
+    redirectClose: marcodelacruz/cafelive/productcontroller

@@ -1,0 +1,10 @@
+name: ReservationController
+form: $/marcodelacruz/cafelive/models/reservation/fields.yaml
+modelClass: MarcoDeLaCruz\Cafelive\Models\Reservation
+defaultRedirect: marcodelacruz/cafelive/reservationcontroller
+create:
+    redirect: 'marcodelacruz/cafelive/reservationcontroller/update/:id'
+    redirectClose: marcodelacruz/cafelive/reservationcontroller
+update:
+    redirect: marcodelacruz/cafelive/reservationcontroller
+    redirectClose: marcodelacruz/cafelive/reservationcontroller

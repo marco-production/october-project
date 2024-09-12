@@ -1,0 +1,10 @@
+name: ProductCategoryController
+form: $/marcodelacruz/cafelive/models/productcategory/fields.yaml
+modelClass: MarcoDeLaCruz\Cafelive\Models\ProductCategory
+defaultRedirect: marcodelacruz/cafelive/productcategorycontroller
+create:
+    redirect: 'marcodelacruz/cafelive/productcategorycontroller/update/:id'
+    redirectClose: marcodelacruz/cafelive/productcategorycontroller
+update:
+    redirect: marcodelacruz/cafelive/productcategorycontroller
+    redirectClose: marcodelacruz/cafelive/productcategorycontroller

@@ -1,0 +1,147 @@
+url = "/menu"
+layout = "main-layout"
+title = "Menu"
+==
+<?php
+use MarcoDeLaCruz\Cafelive\Models\Product;
+
+function onStart()
+{
+    $this["title"] = "Menu";
+    $this["breakfast"] = Product::where("category_id", 1)->where("available", true)->orderBy("id", "asc")->get();
+    $this["lunch"] = Product::where("category_id", 2)->where("available", true)->orderBy("id", "asc")->get(); 
+    $this["dinner"] = Product::where("category_id", 3)->where("available", true)->orderBy("id", "asc")->get();       
+}
+?>
+==
+<!-- ***** Menu Area Starts ***** -->
+<section class="section mt-5" id="offers">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 offset-lg-4 text-center">
+                <div class="section-heading">
+                    <h6>Our Menu</h6>
+                    <h2>For any time of day</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="col-lg-4">
+                <div class="section-heading margin-bottom-zero">
+                    <h6>- Breakfast</h6>
+                    <!--h2>Our selection of cakes with quality taste</h2-->
+                </div>
+            </div>
+            <section class='tabs-content'>
+                <article>
+                    <div class="row">
+                        {% for key, item in breakfast %}
+                           {% if index % 3 == 0 %}
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="left-list">
+                           {% endif %}
+
+                            <div class="col-lg-12">
+                                <div class="tab-item">
+                                    <img src="{{ item.image.getPath() }}" alt="{{ item.name }}">
+                                    <h4>{{ item.name }}</h4>
+                                    <p>{{ item.description|raw }}</p>
+                                    <div class="price">
+                                        <h6>${{ item.price }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% if index % 3 == 0 %}
+                                        </div>
+                                    </div>
+                                </div>
+                           {% endif %}
+                        {% endfor %}
+                    </div>
+                </article>  
+            </section>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="col-lg-4">
+                <div class="section-heading margin-bottom-zero">
+                    <h6>- Lunch</h6>
+                    <!--h2>Our selection of cakes with quality taste</h2-->
+                </div>
+            </div>
+            <section class='tabs-content'>
+                <article>
+                    <div class="row">
+                        {% for key, item in lunch %}
+                           {% if index % 3 == 0 %}
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="left-list">
+                           {% endif %}
+
+                            <div class="col-lg-12">
+                                <div class="tab-item">
+                                    <img src="{{ item.image.getPath() }}" alt="{{ item.name }}">
+                                    <h4>{{ item.name }}</h4>
+                                    <p>{{ item.description|raw }}</p>
+                                    <div class="price">
+                                        <h6>${{ item.price }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% if index % 3 == 0 %}
+                                        </div>
+                                    </div>
+                                </div>
+                           {% endif %}
+                        {% endfor %}
+                    </div>
+                </article>  
+            </section>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="col-lg-4">
+                <div class="section-heading margin-bottom-zero">
+                    <h6>- Dinner</h6>
+                    <!--h2>Our selection of cakes with quality taste</h2-->
+                </div>
+            </div>
+            <section class='tabs-content'>
+                <article>
+                    <div class="row">
+                        {% for key, item in dinner %}
+                           {% if index % 3 == 0 %}
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="left-list">
+                           {% endif %}
+
+                            <div class="col-lg-12">
+                                <div class="tab-item">
+                                    <img src="{{ item.image.getPath() }}" alt="{{ item.name }}">
+                                    <h4>{{ item.name }}</h4>
+                                    <p>{{ item.description|raw }}</p>
+                                    <div class="price">
+                                        <h6>${{ item.price }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {% if index % 3 == 0 %}
+                                        </div>
+                                    </div>
+                                </div>
+                           {% endif %}
+                        {% endfor %}
+                    </div>
+                </article>  
+            </section>
+        </div>
+
+    </div>
+</section>
+<!-- ***** Chefs Area Ends ***** -->

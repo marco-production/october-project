@@ -1,0 +1,11 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        required: 1
+        type: text
+    products:
+        label: Products
+        span: full
+        path: $/marcodelacruz/cafelive/controllers/productcategorycontroller/_products.htm
+        type: partial

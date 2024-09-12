@@ -1,0 +1,32 @@
+plugin:
+    name: 'marcodelacruz.cafelive::lang.plugin.name'
+    description: 'marcodelacruz.cafelive::lang.plugin.description'
+    author: 'Marco De la cruz'
+    icon: oc-icon-adjust
+    homepage: ''
+permissions:
+    Admin:
+        tab: Admin
+        label: Admin
+navigation:
+    main-menu-item:
+        label: CafeLive
+        url: /
+        icon: icon-coffee
+        sideMenu:
+            side-menu-item:
+                label: Chefs
+                url: marcodelacruz/cafelive/chefcontroller
+                icon: icon-users
+            side-menu-item3:
+                label: Products
+                url: marcodelacruz/cafelive/productcontroller
+                icon: icon-adjust
+            side-menu-item2:
+                label: 'Product Categories'
+                url: marcodelacruz/cafelive/productcategorycontroller
+                icon: icon-sitemap
+            side-menu-item4:
+                label: Reservations
+                url: marcodelacruz/cafelive/reservationcontroller
+                icon: icon-book

@@ -1,0 +1,29 @@
+columns:
+    id:
+        label: id
+        type: number
+    name:
+        label: name
+        type: text
+    description:
+        label: description
+        type: text
+    price:
+        label: price
+        type: text
+    category_id:
+        label: category_id
+        type: text
+        select: id
+    available:
+        label: available
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime
+    special_meal_of_week:
+        label: special_meal_of_week
+        type: text

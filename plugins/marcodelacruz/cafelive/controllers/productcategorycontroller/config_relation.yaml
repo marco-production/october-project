@@ -1,0 +1,9 @@
+products:
+    label: 'Products'
+    view:
+        list: $/marcodelacruz/cafelive/models/product/columns.yaml
+        toolbarButtons: create|delete
+    manage:
+        form: $/marcodelacruz/cafelive/models/product/fields.yaml
+        showSearch: true
+        recordsPerPage: 10

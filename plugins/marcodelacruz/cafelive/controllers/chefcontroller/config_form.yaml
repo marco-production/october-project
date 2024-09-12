@@ -1,0 +1,11 @@
+name: ChefController
+modelClass: MarcoDeLaCruz\Cafelive\Models\Chef
+form: $/marcodelacruz/cafelive/models/chef/fields.yaml
+defaultRedirect: marcodelacruz/cafelive/chefcontroller
+create:
+    redirect: 'marcodelacruz/cafelive/chefcontroller/update/:id'
+    redirectClose: marcodelacruz/cafelive/chefcontroller
+update:
+    redirect: marcodelacruz/cafelive/chefcontroller
+    redirectClose: marcodelacruz/cafelive/chefcontroller
+preview: {  }

@@ -1,0 +1,24 @@
+list: $/marcodelacruz/cafelive/models/product/columns.yaml
+modelClass: MarcoDeLaCruz\Cafelive\Models\Product
+title: ProductController
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'marcodelacruz/cafelive/productcontroller/update/:id'
+export:
+    title: Export products
+    modelClass: MarcoDeLaCruz\Cafelive\Models\Product
+    list: $/marcodelacruz/cafelive/models/product/columns_export.yaml
+    redirect: marcodelacruz/cafelive/productcontroller
+    useList: true
+    raw: true
+import:
+    title: Import products
+    modelClass: MarcoDeLaCruz\Cafelive\Models\Product
+    list: $/marcodelacruz/cafelive/models/product/columns.yaml
+    redirect: marcodelacruz/cafelive/productcontroller

@@ -1,0 +1,15 @@
+# ===================================
+#  Import/Export Behavior Config
+# ===================================
+
+import:
+    title: Import products
+    modelClass: MarcoDeLaCruz\Cafelive\Models\ProductImport
+    list: $/marcodelacruz/cafelive/models/product/columns.yaml
+    redirect: marcodelacruz/cafelive/productcontroller
+
+export:
+    title: Export products
+    modelClass: MarcoDeLaCruz\Cafelive\Models\ProductExport
+    list: $/marcodelacruz/cafelive/models/product/columns_export.yaml
+    redirect: marcodelacruz/cafelive/productcontroller

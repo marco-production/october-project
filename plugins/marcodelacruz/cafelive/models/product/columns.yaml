@@ -1,0 +1,31 @@
+columns:
+    id:
+        label: Id
+        type: number
+    image:
+        label: Image
+        type: image
+        sortable: false
+        width: '100'
+        height: '100'
+    name:
+        label: Name
+        type: text
+    description:
+        label: Description
+        type: text
+    price:
+        label: Price
+        type: text
+        select: concat('$', price)
+    category_id:
+        label: Category
+        type: text
+        select: name
+        relation: category
+    available:
+        label: Available
+        type: switch
+    created_at:
+        label: Created at
+        type: datetime

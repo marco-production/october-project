@@ -1,0 +1,33 @@
+fields:
+    name:
+        label: Name
+        span: auto
+        required: 1
+        type: text
+    lastname:
+        label: Lastname
+        span: auto
+        required: 1
+        type: text
+    occupation:
+        label: Occupation
+        span: auto
+        required: 1
+        type: text
+        comment: 'Role in the kitchen'
+    slug:
+        label: Slug
+        span: auto
+        disabled: 0
+        readOnly: 1
+        type: text
+    image:
+        label: Imagen
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+        comment: 'Chef photo'

@@ -1,0 +1,248 @@
+url = "/reservations"
+layout = "main-layout"
+title = "Reservations"
+==
+<?php
+use MarcoDeLaCruz\Cafelive\Models\Reservation;
+use MarcoDeLaCruz\Cafelive\Models\ProductCategory;
+
+function onStart()
+{
+    $this["title"] = "Reservations";
+    $this["categories"] = ProductCategory::All();      
+}
+
+function onSaveReservation()
+{
+    $reservation = new Reservation();
+    $reservation->name = post('name');
+    $reservation->email = post('email');
+    $reservation->phone_number = post('phone');
+    $reservation->date = date('Y-m-d H:i:s', strtotime(post('date')));;
+    $reservation->category_id = post('time');
+    $reservation->number_of_guests = post('guests');
+    $reservation->message = post('message');
+    $reservation->save();
+}
+?>
+==
+{% put styles %}
+    <style>
+        #reservation .validation{
+            color: red !important;
+            margin-bottom: 10px !important;
+        }
+    </style>
+{% endput %}
+
+<!-- ***** Reservation Us Area Starts ***** -->
+<section class="section" id="reservation">
+    <div class="container pt-5 mb-5">
+        <div class="row">
+            <div class="col-lg-6 align-self-center">
+                <div class="left-text-content">
+                    <div class="section-heading">
+                        <h6>Contact Us</h6>
+                        <h2>Here You Can Make A Reservation Or Just walkin to our cafe</h2>
+                    </div>
+                    <p>Donec pretium est orci, non vulputate arcu hendrerit a. Fusce a eleifend riqsie, namei sollicitudin urna diam, sed commodo purus porta ut.</p>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="phone">
+                                <i class="fa fa-phone"></i>
+                                <h4>Phone Numbers</h4>
+                                <span><a href="#">080-090-0990</a><br><a href="#">080-090-0880</a></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="message">
+                                <i class="fa fa-envelope"></i>
+                                <h4>Emails</h4>
+                                <span><a href="#">hello@company.com</a><br><a href="#">info@company.com</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-5" align="center">
+                <div id="form-completed" style="display:none;">
+                    <img src="{{"assets/images/orange.png"|theme}}" width="300" alt="Reservation Completed">
+                    <p style="font-size: xx-large;" class="mt-4">Reservation Completed!</p>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form" method="post">
+                      <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                          <fieldset>
+                            <input name="name" class="required" type="text" id="name" placeholder="Your Name*" required="">
+                            <p style="display:none;" class="validation">The name is required.</p>
+                          </fieldset>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                          <fieldset>
+                          <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" required="">
+                        </fieldset>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                          <fieldset>
+                            <input name="phone" class="required" type="text" id="phone" placeholder="Phone Number*" required="">
+                            <p style="display:none;" class="validation">The phone number is required.</p>
+                          </fieldset>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <fieldset>
+                            <select value="number-guests" class="required" name="guests" id="number-guests">
+                                <option value="">Number Of Guests</option>
+                                <option name="1" id="1">1</option>
+                                <option name="2" id="2">2</option>
+                                <option name="3" id="3">3</option>
+                                <option name="4" id="4">4</option>
+                                <option name="5" id="5">5</option>
+                                <option name="6" id="6">6</option>
+                                <option name="7" id="7">7</option>
+                                <option name="8" id="8">8</option>
+                                <option name="9" id="9">9</option>
+                                <option name="10" id="10">10</option>
+                                <option name="11" id="11">11</option>
+                                <option name="12" id="12">12</option>
+                            </select>
+                            <p style="display:none;" class="validation">The number of guests is required.</p>
+                          </fieldset>
+                        </div>
+                        <div class="col-lg-6">
+                            <div id="filterDate2">    
+                              <div class="input-group date" data-date-format="dd/mm/yyyy">
+                                <input name="date" id="date" type="text" class="form-control required" placeholder="dd/mm/yyyy">
+                                <div class="input-group-addon" >
+                                  <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                                <p style="display:none;" class="validation">The date is required.</p>
+                              </div>
+                            </div>   
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <fieldset>
+                            <select class="required" name="time" id="time">
+                                <option value="">Time</option>
+                                {% for item in categories %}
+                                    <option value="{{ item.id }}" id="{{ item.name }}">{{ item.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <p style="display:none;" class="validation">The date is required.</p>
+                          </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                          <fieldset>
+                            <textarea name="message" rows="6" id="message" placeholder="Message" required=""></textarea>
+                          </fieldset>
+                        </div>
+                        <div class="col-lg-12">
+                          <fieldset>
+                            <button type="button" onclick="validate(this)" id="save-reservation-btn" class="main-button-icon">Make A Reservation</button>
+                          </fieldset>
+                        </div>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Reservation Area Ends ***** -->
+{% put scripts %}
+    <script>
+        var d = new Date();
+        var currentDate = d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear();
+
+        function validate(button){
+            //onclick with this in button type="button"
+            $(button).prop('disabled', true);
+            var validated = true; 
+            var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            let count = 0;
+            
+            // Validate inputs and selects
+            $('.required').each(function(){
+                
+                if($(this).val() == "" || $(this).val() == null){   
+                    
+                    $(this).closest('div').addClass('error');
+                    
+                    count = count + 1;
+
+                    //Label bellow of input with -> style="display: none"
+
+                    $(this).css({ "margin-bottom": "0" }); 
+
+
+                    $(this).closest('div').find('p').css({
+                        "display": "block"
+                    }); 
+                    
+                    validated = false;
+                } else {
+                    count = count - 1;
+                    $(this).closest('div').removeClass('error');
+
+                    $(this).closest('div').find('p').css({"display": "none"});
+                }
+            });
+
+                if(count <= -2 || count >= 4 || count != 2 || count != 0 ){
+                    $('.complete-error').removeClass("d-none");
+                }else{
+                    $('.complete-error').addClass("d-none");
+                }
+            
+            // Validate email format
+            $('.required_email').each(function(){
+                if(!regex.test($(this).val())){
+                    $(this).closest('div').addClass('error');
+
+                    //Label bellow of input with -> style="display: none"
+                    $(this).closest('div').find('p').css({
+                        "display": "block"
+                    }); 
+
+                    validated = false;
+                } else {
+                    $(this).closest('div').removeClass('error');
+
+                    $(this).closest('div').find('p').css({"display": "none"});
+                }
+            });
+
+             if(validated){
+                //Ajax Request
+                $('.complete-error').addClass("d-none");
+                $('#save-reservation-btn').css("pointer-events", "none");
+                $('#contact-form').request('onSaveReservation', {
+                    data: $('#contact-form').serialize()
+                }); 
+
+                $('#contact-form').css({
+                    "display": "none"
+                });
+
+                $('#form-completed').css({
+                    "display": "block"
+                });
+
+                // Do something on success validation
+                $(button).prop('disabled', false);
+
+            } else {
+                // Do something on failed validation
+                $(button).prop('disabled', false);
+            } 
+        }
+
+        //Phone format
+        $("input[name='phone']").keyup(function() {
+            $(this).val($(this).val().replace(/^(\d{3})(\d{3})(\d)+$/, "($1) $2-$3"));
+        });
+
+        //Value for date
+        $("input[name='date']").val(currentDate);
+    </script>
+{% endput %}
